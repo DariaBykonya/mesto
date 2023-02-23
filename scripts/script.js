@@ -1,4 +1,4 @@
-let editProfileButton = document.querySelector('.edit-button');
+let editProfileButton = document.querySelector('.profile__edit-button');
 let editPopup = document.querySelector('.popup');
 editProfileButton.addEventListener('click', function () {
   editPopup.classList.add('popup_opened');
