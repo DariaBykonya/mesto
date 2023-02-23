@@ -1,6 +1,6 @@
 # Проект: Место
 
-Cсылка на сайт:
+Cсылка на сайт: https://dariabykonya.github.io/mesto/
 
 ### Обзор
 
