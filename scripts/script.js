@@ -12,8 +12,8 @@ buttonCloseEdit.addEventListener('click', function () {
 // Находим форму в DOM
 let formElement = document.querySelector('.popup'); // Воспользуйтесь методом querySelector()
 // Находим поля формы в DOM
-let nameInput = document.querySelector('.popup_name'); // Воспользуйтесь инструментом .querySelector()
-let jobInput = document.querySelector('.popup_job');
+let nameInput = document.querySelector('.popup__inpu_type_name'); // Воспользуйтесь инструментом .querySelector()
+let jobInput = document.querySelector('.popup__input_type_job');
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 function handleFormSubmit(evt) {
