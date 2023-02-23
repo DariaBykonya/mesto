@@ -34,8 +34,8 @@
           <img class="element__image" src="./images/karachaevsk-1.png" alt="Фото Карачаевска" />
           <div class="element__info">
             <h2 class="element__text">Карачаевск</h2>
-            <button class="element__like-button">
-              <img class="element__like" src="./images/like.svg" alt="Поставить лайк" />
+            <button class="element__like-button" type="button">
+              <div class="element__like"></div>
             </button>
           </div>
         </div>
@@ -43,8 +43,8 @@
           <img class="element__image" src="./images/elbrus-1.png" alt="Фото горы Эльбрус" />
           <div class="element__info">
             <h2 class="element__text">Гора Эльбрус</h2>
-            <button class="element__like-button">
-              <img class="element__like" src="./images/like.svg" alt="Поставить лайк" />
+            <button class="element__like-button" type="button">
+              <div class="element__like"></div>
             </button>
           </div>
         </div>
@@ -52,8 +52,8 @@
           <img class="element__image" src="./images/dombai-1.png" alt="Фото Домбайя" />
           <div class="element__info">
             <h2 class="element__text">Домбай</h2>
-            <button class="element__like-button">
-              <img class="element__like" src="./images/like.svg" alt="Поставить лайк" />
+            <button class="element__like-button" type="button">
+              <div class="element__like"></div>
             </button>
           </div>
         </div>
@@ -61,8 +61,8 @@
           <img class="element__image" src="./images/elbrus-1.png" alt="Фото горы Эльбрус" />
           <div class="element__info">
             <h2 class="element__text">Гора Эльбрус</h2>
-            <button class="element__like-button">
-              <img class="element__like" src="./images/like.svg" alt="Поставить лайк" />
+            <button class="element__like-button" type="button">
+              <div class="element__like"></div>
             </button>
           </div>
         </div>
@@ -70,8 +70,8 @@
           <img class="element__image" src="./images/dombai-1.png" alt="Фото Домбайя" />
           <div class="element__info">
             <h2 class="element__text">Домбай</h2>
-            <button class="element__like-button">
-              <img class="element__like" src="./images/like.svg" alt="Поставить лайк" />
+            <button class="element__like-button" type="button">
+              <div class="element__like"></div>
             </button>
           </div>
         </div>
@@ -79,8 +79,8 @@
           <img class="element__image" src="./images/karachaevsk-1.png" alt="Фото Карачаевска" />
           <div class="element__info">
             <h2 class="element__text">Карачаевск</h2>
-            <button class="element__like-button">
-              <img class="element__like" src="./images/like.svg" alt="Поставить лайк" />
+            <button class="element__like-button" type="button">
+              <div class="element__like"></div>
             </button>
           </div>
         </div>
@@ -90,7 +90,7 @@
       <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
     </footer>
     <div class="popup">
-      <div class="popup__container">
+      <form action="" method="get" class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <input
           type="text"
@@ -106,15 +106,11 @@
           value="Исследователь океана"
           class="popup__input popup__input_type_job"
         />
-        <button class="popup__save">Сохранить</button>
-        <button class="popup__close button">
-          <img
-            class="popup__close-image"
-            src="./images/popup__close.svg"
-            alt="Кнопка закрыть редактирование"
-          />
+        <button class="popup__save" type="button">Сохранить</button>
+        <button class="popup__close button" type="button">
+          <div class="popup__close-image"></div>
         </button>
-      </div>
+      </form>
     </div>
   </body>
 </html>

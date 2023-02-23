@@ -16,20 +16,18 @@ let nameInput = document.querySelector('.popup__inpu_type_name'); // Воспо�
 let jobInput = document.querySelector('.popup__input_type_job');
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
+let rename = document.querySelector('.profile__name');
+let editJob = document.querySelector('.profile__text');
 function handleFormSubmit(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
   // Так мы можем определить свою логику отправки.
   // О том, как это делать, расскажем позже.
 
   // Получите значение полей jobInput и nameInput из свойства value
-  document.getElementsByTagName('input')[0].value;
-  document.getElementsByTagName('input')[1].value;
   // Выберите элементы, куда должны быть вставлены значения полей
-  let rename = document.querySelector('.profile__name');
-  let editJob = document.querySelector('.profile__text');
   // Вставьте новые значения с помощью textContent
-  rename = document.getElementsByTagName('input')[0].textContent;
-  editJob = document.querySelector('input')[1].textContent;
+  rename.textContent = nameInput;
+  editJob.textContent = jobInput;
 }
 
 // Прикрепляем обработчик к форме:
