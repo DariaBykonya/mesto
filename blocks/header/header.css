@@ -1,7 +1,5 @@
 .header {
   margin-top: 45px;
-  height: 74px;
-  position: relative;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
   box-sizing: border-box;
 }
@@ -11,6 +9,5 @@
     width: 100%;
     padding: 0;
     margin-top: 28px;
-    height: 56px;
   }
 }

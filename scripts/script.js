@@ -1,4 +1,4 @@
-let editProfileButton = document.querySelector('.edit-button');
+let editProfileButton = document.querySelector('.profile__edit-button');
 let editPopup = document.querySelector('.popup');
 editProfileButton.addEventListener('click', function () {
   editPopup.classList.add('popup_opened');
@@ -12,8 +12,8 @@ buttonCloseEdit.addEventListener('click', function () {
 // Находим форму в DOM
 let formElement = document.querySelector('.popup'); // Воспользуйтесь методом querySelector()
 // Находим поля формы в DOM
-let nameInput = document.querySelector('.popup_name'); // Воспользуйтесь инструментом .querySelector()
-let jobInput = document.querySelector('.popup_job');
+let nameInput = document.querySelector('.popup__inpu_type_name'); // Воспользуйтесь инструментом .querySelector()
+let jobInput = document.querySelector('.popup__input_type_job');
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
 let rename = document.querySelector('.profile__name');
