@@ -1,8 +1,8 @@
 .popup__save {
   width: 100%;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  margin-top: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 26px;
   font-style: normal;
   font-size: 18px;
   line-height: 22px;
@@ -19,9 +19,7 @@
   .popup__save {
     font-size: 14px;
     line-height: 17px;
-    padding-top: 14px;
-    padding-bottom: 14px;
-    margin-top: 15px;
+    margin-top: 22px;
   }
 }
 
