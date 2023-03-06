@@ -123,3 +123,12 @@ const createCard = card => {
   cardImage.setAttribute('alt', card.alt);
   addCardsMesto.append(newCard);
 };
+
+cards.forEach(createCard);
+
+const likeButton = document.querySelectorAll('.element__like-button');
+likeButton.forEach(button =>
+  button.addEventListener('click', evt => {
+    button.classList.toggle('element__like-button_active');
+  })
+);
