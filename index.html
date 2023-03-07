@@ -35,7 +35,7 @@
               <h2 class="element__text"></h2>
               <button class="element__like-button" type="button"></button>
             </div>
-            <button class="element__delete" type="button"></button>
+            <button class="element__delete-button" type="button"></button>
           </div>
         </template>
       </section>
@@ -62,13 +62,13 @@
           />
           <button class="popup__save" type="button">Сохранить</button>
         </form>
-        <button class="popup__close button" type="button"></button>
+        <button class="popup__close button" type="submit"></button>
       </div>
     </div>
     <div id="mestoPopup" class="popup">
       <div class="popup__container">
         <h2 class="popup__title">Новое место</h2>
-        <form id="edit" method="get" name="edit-profile">
+        <form id="formAddMesto" method="get" name="edit-profile">
           <input
             type="text"
             name="name"
@@ -79,10 +79,9 @@
             type="text"
             name="profession"
             placeholder="Ссылка на картинку"
-            class="popup__input popup__input_type_job"
-            id="job"
+            class="popup__input popup__input_type_mesto"
           />
-          <button class="popup__save" type="button">Создать</button>
+          <button class="popup__save" type="submit">Создать</button>
         </form>
         <button class="popup__close button" type="button"></button>
       </div>

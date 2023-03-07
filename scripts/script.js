@@ -2,7 +2,7 @@ const editCardsPopup = document.querySelector('#cardsPopup');
 const addMestoPopup = document.querySelector('#mestoPopup');
 let editProfileButton = document.querySelector('.profile__edit-button');
 
-let formElement = document.querySelector('#edit');
+// let formElement = document.querySelector('#edit');
 
 let currentName = document.querySelector('.profile__name');
 
@@ -14,7 +14,6 @@ let currentJob = document.querySelector('.profile__text');
 
 editProfileButton.addEventListener('click', function () {
   openPopup(editCardsPopup);
-  // openPopup(addMestoPopup);
   nameInput.value = currentName.textContent;
   jobInput.value = currentJob.textContent;
 });
@@ -25,7 +24,6 @@ let buttonCloseEditForm = editCardsPopup.querySelector('.popup__close');
 buttonCloseEditForm.addEventListener('click', function () {
   closePopup(editCardsPopup);
 });
-const buttonAddMesto = document.querySelector('.pop');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -35,7 +33,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-function handleFormSubmit(evt) {
+function handleFormEditProfileSubmit(evt) {
   evt.preventDefault();
 
   currentName.textContent = nameInput.value;
@@ -43,10 +41,13 @@ function handleFormSubmit(evt) {
 
   closePopup(editCardsPopup);
 }
-buttonSaveEditForm.addEventListener('click', handleFormSubmit);
+buttonSaveEditForm.addEventListener('click', handleFormEditProfileSubmit);
+
+// открытие и закрытие popup для добавления карточки на страницу
 
 const addMestoButton = document.querySelector('.profile__add-button');
-const buttonCreateMesto = addMestoPopup.querySelector('.popup__save');
+const formAddMesto = document.querySelector('#formAddMesto');
+const buttonCreateMesto = formAddMesto.querySelector('.popup__save');
 const closeAddPopup = addMestoPopup.querySelector('.popup__close');
 
 addMestoButton.addEventListener('click', function () {
@@ -57,22 +58,24 @@ closeAddPopup.addEventListener('click', function () {
   closePopup(addMestoPopup);
 });
 
-// function handleFormSubmit(evt) {
+// // через button добавить карточку на страницу и закрыть Popup
+
+// function handleFormCreateMestoSubmit(evt) {
 //   evt.preventDefault();
-
-//   currentName.textContent = nameInput.value;
-//   currentJob.textContent = jobInput.value;
-
-//   closePopup(editCardsPopup);
+//   const formAddMesto = evt.target;
+//   const image = formAddMesto.querySelector('.popup__input_type_mesto').value;
+//   const name = formAddMesto.querySelector('.popup__input_type_name').value;
+//   const card = {
+//     name: name,
+//     alt: '',
+//     image: image
+//   };
+//   createCard(card);
+//   closePopup(addMestoPopup);
 // }
-// buttonSaveEditForm.addEventListener('click', handleFormSubmit);
+// buttonCreateMesto.addEventListener('click', handleFormCreateMestoSubmit);
 
-function handleFormSubmit(evt) {
-  evt.preventDefault();
-
-  closePopup(addMestoPopup);
-}
-buttonCreateMesto.addEventListener('click', handleFormSubmit);
+// добавление карточек на страницу
 
 const cards = [
   {
@@ -121,10 +124,14 @@ const createCard = card => {
 
   cardImage.setAttribute('src', card.image);
   cardImage.setAttribute('alt', card.alt);
+  const deleteButton = newCard.querySelector('.element__delete-button');
+  deleteButton.addEventListener('click', handleDeleteButtonClick);
   addCardsMesto.append(newCard);
 };
 
 cards.forEach(createCard);
+
+// лайк для карточки
 
 const likeButton = document.querySelectorAll('.element__like-button');
 likeButton.forEach(button =>
@@ -132,3 +139,11 @@ likeButton.forEach(button =>
     button.classList.toggle('element__like-button_active');
   })
 );
+
+// удаление карточки
+
+function handleDeleteButtonClick(evt) {
+  const button = evt.target;
+  const card = button.closest('.element');
+  card.remove();
+}
