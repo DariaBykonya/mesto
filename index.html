@@ -28,54 +28,22 @@
         <button class="button profile__add-button" type="button"></button>
       </section>
       <section class="page-content elements">
-        <div class="element">
-          <img class="element__image" src="./images/karachaevsk-1.png" alt="Фото Карачаевска" />
-          <div class="element__info">
-            <h2 class="element__text">Карачаевск</h2>
-            <button class="element__like-button" type="button"></button>
+        <template id="cardTemplate">
+          <div class="element">
+            <img class="element__image" />
+            <div class="element__info">
+              <h2 class="element__text"></h2>
+              <button class="element__like-button" type="button"></button>
+            </div>
+            <button class="element__delete-button" type="button"></button>
           </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/elbrus-1.png" alt="Фото горы Эльбрус" />
-          <div class="element__info">
-            <h2 class="element__text">Гора Эльбрус</h2>
-            <button class="element__like-button" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/dombai-1.png" alt="Фото Домбайя" />
-          <div class="element__info">
-            <h2 class="element__text">Домбай</h2>
-            <button class="element__like-button" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/elbrus-1.png" alt="Фото горы Эльбрус" />
-          <div class="element__info">
-            <h2 class="element__text">Гора Эльбрус</h2>
-            <button class="element__like-button" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/dombai-1.png" alt="Фото Домбайя" />
-          <div class="element__info">
-            <h2 class="element__text">Домбай</h2>
-            <button class="element__like-button" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./images/karachaevsk-1.png" alt="Фото Карачаевска" />
-          <div class="element__info">
-            <h2 class="element__text">Карачаевск</h2>
-            <button class="element__like-button" type="button"></button>
-          </div>
-        </div>
+        </template>
       </section>
     </main>
     <footer class="page-content footer">
       <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div id="cardsPopup" class="popup">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form id="edit" method="get" name="edit-profile">
@@ -95,6 +63,34 @@
           <button class="popup__save" type="button">Сохранить</button>
         </form>
         <button class="popup__close button" type="submit"></button>
+      </div>
+    </div>
+    <div id="mestoPopup" class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form id="formAddMesto" method="get" name="edit-profile">
+          <input
+            type="text"
+            name="name"
+            placeholder="Название"
+            class="popup__input popup__input_type_name"
+          />
+          <input
+            type="text"
+            name="profession"
+            placeholder="Ссылка на картинку"
+            class="popup__input popup__input_type_mesto"
+          />
+          <button class="popup__save" type="submit">Создать</button>
+        </form>
+        <button class="popup__close button" type="button"></button>
+      </div>
+    </div>
+    <div id="imagePopup" class="popup">
+      <div class="popup-image">
+        <img class="popup-image__image" />
+        <p class="popup-image__heading"></p>
+        <button class="button popup__close" type="button"></button>
       </div>
     </div>
   </body>
