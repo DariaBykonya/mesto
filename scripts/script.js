@@ -1,26 +1,26 @@
-const editCardsPopup = document.querySelector('#cardsPopup');
+import cards from './constants.js';
+
+const popupEditProfile = document.querySelector('#edit-profile-popup');
 const addMestoPopup = document.querySelector('#mestoPopup');
-let editProfileButton = document.querySelector('.profile__edit-button');
+const editProfileButton = document.querySelector('.profile__edit-button');
 
-let currentName = document.querySelector('.profile__name');
+const currentName = document.querySelector('.profile__name');
 
-let nameInput = document.querySelector('.popup__input_type_name');
+const nameInput = document.querySelector('.popup__input_type_name');
 
-let jobInput = document.querySelector('.popup__input_type_job');
+const jobInput = document.querySelector('.popup__input_type_job');
 
-let currentJob = document.querySelector('.profile__text');
+const currentJob = document.querySelector('.profile__text');
 
 editProfileButton.addEventListener('click', function () {
-  openPopup(editCardsPopup);
+  openPopup(popupEditProfile);
   nameInput.value = currentName.textContent;
   jobInput.value = currentJob.textContent;
 });
 
-let buttonSaveEditForm = editCardsPopup.querySelector('.popup__save');
-
-let buttonCloseEditForm = editCardsPopup.querySelector('.popup__close');
+const buttonCloseEditForm = popupEditProfile.querySelector('.popup__close');
 buttonCloseEditForm.addEventListener('click', function () {
-  closePopup(editCardsPopup);
+  closePopup(popupEditProfile);
 });
 
 function openPopup(popup) {
@@ -31,21 +31,21 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
+const buttonSaveEditForm = popupEditProfile.querySelector('#formEditProfile');
+
+buttonSaveEditForm.addEventListener('submit', handleFormEditProfileSubmit);
+
 function handleFormEditProfileSubmit(evt) {
   evt.preventDefault();
-
   currentName.textContent = nameInput.value;
   currentJob.textContent = jobInput.value;
 
-  closePopup(editCardsPopup);
+  closePopup(popupEditProfile);
 }
-buttonSaveEditForm.addEventListener('click', handleFormEditProfileSubmit);
 
 // открытие и закрытие popup для добавления карточки на страницу
 
 const addMestoButton = document.querySelector('.profile__add-button');
-const formAddMesto = document.querySelector('#formAddMesto');
-const buttonCreateMesto = formAddMesto.querySelector('.popup__save');
 const closeAddPopup = addMestoPopup.querySelector('.popup__close');
 
 addMestoButton.addEventListener('click', function () {
@@ -54,69 +54,29 @@ addMestoButton.addEventListener('click', function () {
 
 closeAddPopup.addEventListener('click', function () {
   closePopup(addMestoPopup);
+  formAddMesto.reset();
 });
 
 // // через button добавить карточку на страницу и закрыть Popup
 
-const formCreateMesto = document.querySelector('#formAddMesto');
-formCreateMesto.addEventListener('submit', handleFormCreateMestoSubmit);
+const formAddMesto = document.querySelector('#formAddMesto');
+formAddMesto.addEventListener('submit', handleFormCreateMestoSubmit);
 
 function handleFormCreateMestoSubmit(evt) {
   evt.preventDefault();
-  const formCreateMesto = evt.target;
-  const image = formAddMesto.querySelector('.popup__input_type_mesto').value;
+  const formAddMesto = evt.target;
+  const imageSrc = formAddMesto.querySelector('.popup__input_type_mesto').value;
   const name = formAddMesto.querySelector('.popup__input_type_name').value;
   const card = {
     name: name,
-    alt: '',
-    image: image
+    image: imageSrc
   };
   createCard(card);
   closePopup(addMestoPopup);
+  formAddMesto.reset();
 }
-buttonCreateMesto.addEventListener('click', handleFormCreateMestoSubmit);
 
-// добавление карточек на страницу
-
-const cards = [
-  {
-    name: 'Архыз',
-    alt: '',
-    image:
-      'https://images.unsplash.com/photo-1638989280415-d58f7340b273?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1228&q=80'
-  },
-  {
-    name: 'Челябинская область',
-    // alt: '',
-    image:
-      'https://images.unsplash.com/photo-1575738171526-df0217663296?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80'
-  },
-  {
-    name: 'Иваново',
-    alt: '',
-    image: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    alt: '',
-    image:
-      'https://images.unsplash.com/photo-1665073140507-0bad3d962476?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1203&q=80'
-  },
-  {
-    name: 'Холмогорский район',
-    alt: '',
-    image:
-      'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    alt: '',
-    image:
-      'https://images.unsplash.com/photo-1551845041-63e8e76836ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=389&q=80'
-  }
-];
-
-const addCardsMesto = document.querySelector('.elements');
+const cardsContainer = document.querySelector('.elements');
 const popupImage = document.querySelector('#imagePopup');
 
 // отображение карточек на странице, активация лайк на карточках
@@ -138,17 +98,22 @@ const createCard = card => {
 
   const likeButton = newCard.querySelector('.element__like-button');
   likeButton.addEventListener('click', evt => {
-    const buttonlike = evt.target;
     likeButton.classList.toggle('element__like-button_active');
-  });
-  addCardsMesto.append(newCard);
 
+    return card;
+  });
+
+  const renderCard = evt => {
+    createCard();
+  };
+
+  cardsContainer.prepend(newCard);
   // открытие Popup с изображением
 
   cardImage.addEventListener('click', evt => {
-    const currentImageClick = evt.target;
     const openImagePopup = popupImage.querySelector('.popup-image__image');
     openImagePopup.setAttribute('src', card.image);
+    openImagePopup.setAttribute('alt', `Фотография ${card.name}`);
     const imageHeading = popupImage.querySelector('.popup-image__heading');
     imageHeading.textContent = card.name;
     openPopup(popupImage);

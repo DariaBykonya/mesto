@@ -1,0 +1,9 @@
+.popup-image__container {
+  display: flex;
+  flex-direction: column;
+  max-width: 75vw;
+  background: none;
+  height: 75vh;
+  gap: 10px;
+  position: relative;
+}
