@@ -99,8 +99,6 @@ const createCard = card => {
   const likeButton = newCard.querySelector('.element__like-button');
   likeButton.addEventListener('click', evt => {
     likeButton.classList.toggle('element__like-button_active');
-
-    return card;
   });
 
   // открытие Popup с изображением
