@@ -31,9 +31,9 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-const buttonSaveEditForm = popupEditProfile.querySelector('#formEditProfile');
+const formEdit = popupEditProfile.querySelector('#formEditProfile');
 
-buttonSaveEditForm.addEventListener('submit', handleFormEditProfileSubmit);
+formEdit.addEventListener('submit', handleFormEditProfileSubmit);
 
 function handleFormEditProfileSubmit(evt) {
   evt.preventDefault();
@@ -71,7 +71,7 @@ function handleFormCreateMestoSubmit(evt) {
     name: name,
     image: imageSrc
   };
-  createCard(card);
+  renderCard(card);
   closePopup(addMestoPopup);
   formAddMesto.reset();
 }
@@ -103,11 +103,6 @@ const createCard = card => {
     return card;
   });
 
-  const renderCard = evt => {
-    createCard();
-  };
-
-  cardsContainer.prepend(newCard);
   // открытие Popup с изображением
 
   cardImage.addEventListener('click', evt => {
@@ -118,9 +113,12 @@ const createCard = card => {
     imageHeading.textContent = card.name;
     openPopup(popupImage);
   });
+  return newCard;
 };
 
-cards.forEach(createCard);
+const renderCard = card => cardsContainer.prepend(createCard(card));
+
+cards.forEach(renderCard);
 
 // закрытие Popup с изображением
 
