@@ -2,27 +2,18 @@
   width: 100%;
   padding-top: 15px;
   padding-bottom: 15px;
-  margin-top: 26px;
+  margin-top: 18px;
   font-style: normal;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
-  color: #ffffff;
-  background-color: #000000;
   border-radius: 2px;
-  transition: opacity 0.2s linear;
   border: none;
-  cursor: pointer;
 }
 
 @media screen and (max-width: 591px) {
   .popup__save {
     font-size: 14px;
     line-height: 17px;
-    margin-top: 22px;
   }
-}
-
-.popup__save:hover {
-  opacity: 0.8;
 }
