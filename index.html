@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
+    <script type="module" src="./scripts/validate.js" defer></script>
     <script type="module" src="./scripts/script.js" defer></script>
   </head>
   <body class="page">
@@ -46,45 +47,61 @@
     <div id="edit-profile-popup" class="popup">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form id="formEditProfile" method="get" name="edit-profile">
+        <form id="formEditProfile" method="get" name="editProfile" class="popup__form" novalidate>
           <input
             type="text"
             name="name"
             placeholder="Имя"
+            id="name"
             class="popup__input popup__input_type_name"
-            required="required"
+            required
+            minlength="2"
+            maxlength="40"
           />
+          <span class="popup__input-error popup__input-error_type_name"></span>
           <input
             type="text"
             name="profession"
             placeholder="Профессия"
             class="popup__input popup__input_type_job"
             id="job"
-            required="required"
+            required
+            minlength="2"
+            maxlength="200"
           />
+          <span class="popup__input-error popup__input-error_type_job" id="job-error"></span>
           <button class="popup__save" type="submit">Сохранить</button>
         </form>
-        <button class="popup__close button" type="button"></button>
+        <button class="button popup__close" type="button"></button>
       </div>
     </div>
     <div id="mestoPopup" class="popup">
       <div class="popup__container">
         <h2 class="popup__title">Новое место</h2>
-        <form id="formAddMesto" method="get" name="edit-profile">
+        <form id="formAddMesto" method="get" name="addMesto" class="popup__form" novalidate>
           <input
             type="text"
-            name="name"
+            name="mesto"
             placeholder="Название"
+            id="mesto"
             class="popup__input popup__input_type_name"
-            required="required"
+            required
+            minlength="2"
+            maxlength="30"
           />
+          <span class="popup__input-error popup__input-error_type_mesto" id="mesto-error"></span>
           <input
             type="url"
-            name="profession"
+            name="image"
+            id="image"
             placeholder="Ссылка на картинку"
             class="popup__input popup__input_type_mesto"
-            required="required"
+            required
           />
+          <span
+            class="popup__input-error popup__input-error_type_image"
+            id="url-image-error"
+          ></span>
           <button class="popup__save" type="submit">Создать</button>
         </form>
         <button class="popup__close button" type="button"></button>

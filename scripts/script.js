@@ -1,4 +1,5 @@
 import cards from './constants.js';
+import { disableButton, validationConfig, hideInputError } from './validate.js';
 
 const popupEditProfile = document.querySelector('#edit-profile-popup');
 const addMestoPopup = document.querySelector('#mestoPopup');
@@ -11,6 +12,10 @@ const nameInput = document.querySelector('.popup__input_type_name');
 const jobInput = document.querySelector('.popup__input_type_job');
 
 const currentJob = document.querySelector('.profile__text');
+
+const closeButton = document.querySelectorAll('.popup__close');
+
+const popupList = document.querySelectorAll('.popup');
 
 editProfileButton.addEventListener('click', function () {
   openPopup(popupEditProfile);
@@ -25,11 +30,33 @@ buttonCloseEditForm.addEventListener('click', function () {
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupOnEsc);
 }
 
 function closePopup(popup) {
+  document.removeEventListener('keydown', closePopupOnEsc);
   popup.classList.remove('popup_opened');
 }
+
+//функция закрытия попапа при нажатие на esc
+function closePopupOnEsc(evt) {
+  if (evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  }
+}
+
+// функция закрытия попапа при клике на оверлэй
+const closePopupOnOverlay = function (event) {
+  if (event.target === event.currentTarget) {
+    closePopup(event.target);
+  }
+};
+
+// навешивание закрытие
+popupList.forEach(item => {
+  item.addEventListener('mousedown', closePopupOnOverlay);
+});
 
 const formEdit = popupEditProfile.querySelector('#formEditProfile');
 
@@ -50,6 +77,27 @@ const closeAddPopup = addMestoPopup.querySelector('.popup__close');
 
 addMestoButton.addEventListener('click', function () {
   openPopup(addMestoPopup);
+
+  const submitButton = formAddMesto.querySelector(validationConfig.submitButtonSelector);
+  disableButton(
+    submitButton,
+    validationConfig.inactiveButtonClass,
+    validationConfig.activeButtonClass
+  );
+
+  const inputList = formAddMesto.querySelectorAll(validationConfig.inputSelector);
+
+  inputList.forEach(input => {
+    const errorTextElement = document.querySelector(
+      `${validationConfig.errorClassTemplate}${input.id}`
+    );
+    hideInputError(
+      input,
+      validationConfig.inputErrorClass,
+      errorTextElement,
+      validationConfig.activeErrorClass
+    );
+  });
 });
 
 closeAddPopup.addEventListener('click', function () {
