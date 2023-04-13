@@ -18,6 +18,12 @@ const closeButton = document.querySelectorAll('.popup__close');
 const popupList = document.querySelectorAll('.popup');
 
 editProfileButton.addEventListener('click', function () {
+  const submitButton = popupEditProfile.querySelector(validationConfig.submitButtonSelector);
+  disableButton(
+    submitButton,
+    validationConfig.inactiveButtonClass,
+    validationConfig.activeButtonClass
+  );
   openPopup(popupEditProfile);
   nameInput.value = currentName.textContent;
   jobInput.value = currentJob.textContent;
@@ -76,6 +82,7 @@ const addMestoButton = document.querySelector('.profile__add-button');
 const closeAddPopup = addMestoPopup.querySelector('.popup__close');
 
 addMestoButton.addEventListener('click', function () {
+  formAddMesto.reset();
   openPopup(addMestoPopup);
 
   const submitButton = formAddMesto.querySelector(validationConfig.submitButtonSelector);
@@ -84,20 +91,6 @@ addMestoButton.addEventListener('click', function () {
     validationConfig.inactiveButtonClass,
     validationConfig.activeButtonClass
   );
-
-  const inputList = formAddMesto.querySelectorAll(validationConfig.inputSelector);
-
-  inputList.forEach(input => {
-    const errorTextElement = document.querySelector(
-      `${validationConfig.errorClassTemplate}${input.id}`
-    );
-    hideInputError(
-      input,
-      validationConfig.inputErrorClass,
-      errorTextElement,
-      validationConfig.activeErrorClass
-    );
-  });
 });
 
 closeAddPopup.addEventListener('click', function () {
@@ -105,7 +98,7 @@ closeAddPopup.addEventListener('click', function () {
   formAddMesto.reset();
 });
 
-// // через button добавить карточку на страницу и закрыть Popup
+// через button добавить карточку на страницу и закрыть Popup
 
 const formAddMesto = document.querySelector('#formAddMesto');
 formAddMesto.addEventListener('submit', handleFormCreateMestoSubmit);

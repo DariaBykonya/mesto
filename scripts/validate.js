@@ -95,9 +95,6 @@ const enableValidation = config => {
   formList.forEach(form => {
     const inputList = Array.from(form.querySelectorAll(config.inputSelector));
     const submitButton = form.querySelector(config.submitButtonSelector);
-    form.addEventListener('submit', evt => {
-      evt.preventDefault();
-    });
     setEventListeners(
       inputList,
       config.inputErrorClass,
