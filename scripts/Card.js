@@ -18,7 +18,7 @@ export default class Card {
   }
 
   // добавление лайка на карточке
-  _addLikeCard = () => {
+  _toggleLike = () => {
     this._likeButtonElement.classList.toggle('element__like-button_active');
   };
 
@@ -32,7 +32,7 @@ export default class Card {
   };
 
   _setEventListeners() {
-    this._likeButtonElement.addEventListener('click', this._addLikeCard);
+    this._likeButtonElement.addEventListener('click', this._toggleLike);
     this._deleteButtonElement.addEventListener('click', this._deleteCard);
     this._imageElement.addEventListener('click', this._handleOpenImagePopup);
   }

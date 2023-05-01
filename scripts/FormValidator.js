@@ -63,7 +63,6 @@ export default class FormValidator {
     this._inputList.forEach(input => {
       input.addEventListener('input', () => {
         this._input = input;
-        console.log(this);
         this._checkInputValidity();
         this._toggleButtonState();
       });
@@ -74,7 +73,7 @@ export default class FormValidator {
     this._setEventListener();
   }
 
-  resetErrorPopup() {
+  resetValidation() {
     this._inputList.forEach(input => {
       this._input = input;
       this._errorTextElement = this._form.querySelector(

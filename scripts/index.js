@@ -28,6 +28,10 @@ const selectorTemplate = '#cardTemplate';
 
 const containerElements = document.querySelector('.elements');
 
+const formAddMesto = document.querySelector('#formAddMesto');
+const imageSrc = formAddMesto.querySelector('.popup__input_type_mesto');
+const name = formAddMesto.querySelector('.popup__input_type_name');
+
 function createCard(element) {
   const card = new Card(element, selectorTemplate, openImagePopup);
   const cardElement = card.createCard();
@@ -52,7 +56,7 @@ function openImagePopup(data) {
 }
 
 editProfileButton.addEventListener('click', () => {
-  formPopupEditProfileValidator.resetErrorPopup();
+  formPopupEditProfileValidator.resetValidation();
   nameInput.value = currentName.textContent;
   jobInput.value = currentJob.textContent;
   openPopup(popupEditProfile);
@@ -112,28 +116,25 @@ const closeAddPopup = addMestoPopup.querySelector('.popup__close');
 
 addMestoButton.addEventListener('click', () => {
   formAddMesto.reset();
-  formAddcardValidator.resetErrorPopup();
+  formAddcardValidator.resetValidation();
   openPopup(addMestoPopup);
 });
 
 closeAddPopup.addEventListener('click', function () {
   closePopup(addMestoPopup);
-  formAddMesto.reset();
 });
 
 // через button добавить карточку на страницу и закрыть Popup
 
-const formAddMesto = document.querySelector('#formAddMesto');
 formAddMesto.addEventListener('submit', handleFormCreateMestoSubmit);
 
 function handleFormCreateMestoSubmit(evt) {
   evt.preventDefault();
   const formAddMesto = evt.target;
-  const imageSrc = formAddMesto.querySelector('.popup__input_type_mesto').value;
-  const name = formAddMesto.querySelector('.popup__input_type_name').value;
+
   const card = {
-    name: name,
-    image: imageSrc
+    name: name.value,
+    image: imageSrc.value
   };
 
   addCard(containerElements, createCard(card));
