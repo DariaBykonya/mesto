@@ -2,7 +2,7 @@
 export default class Card {
   constructor(data, templateSelector, openImagePopup) {
     this._data = data;
-    this._name = data.name;
+    this._name = data.title;
     this._image = data.image;
     this._templateSelector = templateSelector;
     this._openImagePopup = openImagePopup;
@@ -27,14 +27,14 @@ export default class Card {
     this._element.remove();
   };
 
-  _handleOpenImagePopup = () => {
+  _handleCardClick = () => {
     this._openImagePopup(this._data);
   };
 
   _setEventListeners() {
     this._likeButtonElement.addEventListener('click', this._toggleLike);
     this._deleteButtonElement.addEventListener('click', this._deleteCard);
-    this._imageElement.addEventListener('click', this._handleOpenImagePopup);
+    this._imageElement.addEventListener('click', this._handleCardClick);
   }
 
   createCard() {

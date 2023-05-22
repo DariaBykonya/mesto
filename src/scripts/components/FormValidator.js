@@ -48,7 +48,7 @@ export default class FormValidator {
     }
   }
 
-  _checkInputValidity(input) {
+  _checkInputValidity() {
     this._errorTextElement = this._form.querySelector(
       `${this._errorSelectorTemplate}${this._input.id}`
     );
