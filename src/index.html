@@ -3,20 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
-    <script type="module" src="./pages/index.js" defer></script>
   </head>
   <body class="page">
     <header class="page-content header">
       <a href="/" class="header__link">
-        <img class="logo header__logo" src="./images/logo.svg" alt="Логотип Место" />
+        <img
+          class="logo header__logo"
+          src="<%=require('./images/logo.svg')%>"
+          alt="Логотип Место"
+        />
       </a>
     </header>
     <main>
       <section class="page-content profile">
         <div class="profile__full-info">
-          <img class="profile__image" src="./images/profile__image.jpg" alt="фото пользователя" />
+          <img
+            class="profile__image"
+            src="<%=require('./images/profile__image.jpg')%>"
+            alt="фото пользователя"
+          />
           <div class="profile__info">
             <div class="profile__name-edit">
               <h1 class="profile__name">Жак-Ив Кусто</h1>

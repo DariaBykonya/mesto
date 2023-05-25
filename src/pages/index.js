@@ -18,6 +18,8 @@ import {
   validationConfig
 } from '../scripts/utils/constants.js';
 
+import './index.css';
+
 const userInfo = new UserInfo(configProfile);
 
 const popupImages = new PopupWithImage(popupImageSelector);
