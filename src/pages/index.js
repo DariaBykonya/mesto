@@ -1,9 +1,9 @@
-import Card from '../scripts/components/Card.js';
-import FormValidator from '../scripts/components/FormValidator.js';
-import PopupWithImage from '../scripts/components/PopupWithImage.js';
-import Section from '../scripts/components/Section.js';
-import UserInfo from '../scripts/components/UserInfo.js';
-import PopupWithForm from '../scripts/components/PopupWithForm.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import Section from '../components/Section.js';
+import UserInfo from '../components/UserInfo.js';
+import PopupWithForm from '../components/PopupWithForm.js';
 import {
   cards,
   editProfileButton,
@@ -16,7 +16,7 @@ import {
   forms,
   configProfile,
   validationConfig
-} from '../scripts/utils/constants.js';
+} from '../utils/constants.js';
 
 import './index.css';
 
@@ -29,13 +29,17 @@ const newSection = new Section(
   {
     items: cards,
     renderer: element => {
-      const card = new Card(element, selectorTemplate, popupImages.open);
-      return card.createCard();
+      newSection.addItem(createCard(element));
     }
   },
   containerElementsSelector
 );
-newSection.addCardFromArray();
+function createCard(element) {
+  const card = new Card(element, selectorTemplate, popupImages.open);
+  return card.createCard();
+}
+
+newSection.renderItems();
 
 const popupProfile = new PopupWithForm(popupProfileSelector, data => {
   userInfo.setUserInfo(data);
