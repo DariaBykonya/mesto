@@ -47,7 +47,7 @@ const popupProfile = new PopupWithForm(popupProfileSelector, data => {
 popupProfile.setEventListeners();
 
 const popupAddMesto = new PopupWithForm(popupAddMestoSelector, data => {
-  newSection.addItem(newSection.renderer(data));
+  newSection.addItem(createCard(data));
 });
 popupAddMesto.setEventListeners();
 
