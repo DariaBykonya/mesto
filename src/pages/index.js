@@ -96,9 +96,11 @@ const popupProfile = new PopupWithForm(popupProfileSelector, data => {
 });
 
 const popupAddMesto = new PopupWithForm(popupAddMestoSelector, data => {
-  Promise.all([api.getInfo(), api.addCard(data)])
-    .then(([dataUser, dataCard]) => {
-      dataCard.myId = dataUser._id;
+  api
+    .addCard(data)
+    .then(dataCard => {
+      console.log(userInfo.getId());
+      dataCard.myId = userInfo.getId();
       newSection.addItem(createCard(dataCard));
       popupAddMesto.close();
     })
@@ -161,6 +163,7 @@ Promise.all([api.getInfo(), api.getCards()])
       profession: dataUser.about,
       avatar: dataUser.avatar
     });
+    userInfo.setId(dataUser._id);
     newSection.renderItems(dataCard);
   })
   .catch(error => console.error(`Ошибка ${error}`));
